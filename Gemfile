@@ -19,7 +19,7 @@ gem "puma", "~> 5.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
-
+gem 'rack-cors'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 gem "jwt" #The "gem jwt" refers to the JSON Web Token (JWT) gem, which is a library for working with JSON Web Tokens in Ruby applications. JWT is a compact, URL-safe means of representing claims between two parties. It is commonly used for authentication and authorization purposes in web applications and APIs.
