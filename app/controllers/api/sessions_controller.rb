@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
 		if user && user.authenticate(session_params[:password])
 		  access_token = JsonWebToken.generate_access_token(user)
           refresh_token = JsonWebToken.generate_refresh_token(user)
-		  render json: { accessToken: access_token, refereshToken: refresh_token}
+		  render json: { accessToken: access_token, refreshToken: refresh_token}
 		else
 		  render json: { error: 'Invalid email or password' }, status: :unauthorized
 		end
