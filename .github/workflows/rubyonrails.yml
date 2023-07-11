@@ -14,17 +14,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      postgres:
-        image: postgres:11-alpine
+      mysql:
+        image: mysql:8.0.33
         ports:
-          - "5432:5432"
+          - "3306:3306"
         env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
+          MYSQL_DATABASE: attentive-test
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: Tickit@01
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DATABASE_URL: "mysql://rails:password@localhost:3306/attentive_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
