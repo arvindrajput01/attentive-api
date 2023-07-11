@@ -9,6 +9,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 # Use sqlite3 as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -41,6 +42,13 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'factory_bot_rails', '~> 6.0'
+
+  #security tool
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'ruby_audit'
+  gem 'rubocop-rails'
+  gem 'rubocop'
 end
 
 group :development do
