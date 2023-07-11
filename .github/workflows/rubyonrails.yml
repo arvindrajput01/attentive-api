@@ -19,7 +19,7 @@ jobs:
         ports:
           - "3306:3306"
         env:
-          MYSQL_DATABASE: attentive-test
+          MYSQL_DATABASE: attentive
           MYSQL_USER: admin
           MYSQL_PASSWORD: Tickit@01
     env:
