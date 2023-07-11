@@ -24,7 +24,7 @@ jobs:
           MYSQL_PASSWORD: Tickit@01
     env:
       RAILS_ENV: test
-      DATABASE_URL: "mysql://rails:password@localhost:3306/attentive_test"
+      DATABASE_URL: "db://rails:password@localhost:3306/attentive_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
