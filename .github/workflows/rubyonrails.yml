@@ -58,8 +58,10 @@ jobs:
         run: ruby --version
       - name: Print Bundler version
         run: bundle --version
+      - name: Install bundler-audit
+        run: bundle add bundler-audit --group development
       - name: Security audit dependencies
-        run: vendor/bundle/ruby/3.1.0/bin/bundler-audit --update
+        run: bundle exec bundler-audit --update
       - name: Security audit application code
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
