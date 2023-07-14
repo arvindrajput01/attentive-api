@@ -31,14 +31,12 @@ jobs:
           gem install bundler
           bundle config path ~/.gem
           bundle install
-      - name: Update Bundler Configuration
-        run: bundle config set path '~/.gem'
-      - name: Set PATH for gem executables
-        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$PATH" >> $GITHUB_ENV
+      - name: Set PATH for Ruby and gem executables
+        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$HOME/.rubies/ruby-3.1.0/bin:$PATH" >> $GITHUB_ENV
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: ~/.gem/ruby/3.1.0/bin/bundle exec rake
+        run: bundle exec rake
 
   lint:
     runs-on: ubuntu-latest
@@ -52,10 +50,8 @@ jobs:
           gem install bundler
           bundle config path ~/.gem
           bundle install
-      - name: Update Bundler Configuration
-        run: bundle config set path '~/.gem'
-      - name: Set PATH for gem executables
-        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$PATH" >> $GITHUB_ENV
+      - name: Set PATH for Ruby and gem executables
+        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$HOME/.rubies/ruby-3.1.0/bin:$PATH" >> $GITHUB_ENV
       - name: Security audit dependencies
         run: vendor/bundle/ruby/3.1.0/bin/bundler-audit --update
       - name: Security audit application code
