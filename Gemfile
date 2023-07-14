@@ -6,14 +6,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
+
+gem 'rails', '~> 7.0.5', '>= 7.0.5.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
-
+gem 'actionpack', '~> 7.0.5.1'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
