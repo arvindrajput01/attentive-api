@@ -33,8 +33,8 @@ jobs:
           bundle install
       - name: Update Bundler Configuration
         run: bundle config set path '~/.gem'
-      - name: Add gem executables to PATH
-        run: echo "::add-path::$HOME/.gem/ruby/3.0.0/bin"
+      - name: Set PATH for gem executables
+        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$PATH" >> $GITHUB_ENV
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
@@ -54,8 +54,8 @@ jobs:
           bundle install
       - name: Update Bundler Configuration
         run: bundle config set path '~/.gem'
-      - name: Add gem executables to PATH
-        run: echo "::add-path::$HOME/.gem/ruby/3.0.0/bin"
+      - name: Set PATH for gem executables
+        run: echo "PATH=$HOME/.gem/ruby/3.1.0/bin:$PATH" >> $GITHUB_ENV
       - name: Security audit dependencies
         run: vendor/bundle/ruby/3.1.0/bin/bundler-audit --update
       - name: Security audit application code
