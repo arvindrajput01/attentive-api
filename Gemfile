@@ -18,8 +18,8 @@ gem 'rack-cors'
 gem 'rails', '~> 7.0.5', '>= 7.0.5.1'
 gem 'rubocop'
 gem 'rubocop-rails'
-gem 'ruby_audit'
 gem 'rspec-rails'
+gem 'ruby_audit'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 
 group :development, :test do
