@@ -65,4 +65,4 @@ jobs:
       - name: Security audit application code
         run: vendor/bundle/ruby/3.1.0/bin/brakeman -q -w2
       - name: Lint Ruby files
-        run: bin/rubocop --parallel
+        run: vendor/bundle/ruby/3.1.0/bin/rubocop --parallel
