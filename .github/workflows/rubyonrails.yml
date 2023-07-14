@@ -24,41 +24,43 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install Ruby and gems
+      - name: Install RVM and Ruby
         run: |
-          mkdir -p ~/.gem
-          echo "gem: --user-install --no-document" > ~/.gemrc
-          gem install bundler
-          bundle config path ~/.gem
-          bundle install
-      - name: Print PATH
-        run: echo "PATH=$PATH"
+          sudo apt-get update
+          sudo apt-get install -y gnupg2 curl
+          gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+          \curl -sSL https://get.rvm.io | bash -s stable --ruby=3.1.0 --gems=bundler
+      - name: Set PATH for Ruby and gem executables
+        run: echo "PATH=$HOME/.rvm/rubies/ruby-3.1.0/bin:$HOME/.rvm/gems/ruby-3.1.0/bin:$PATH" >> $GITHUB_ENV
+      - name: Print Ruby version
+        run: ruby --version
+      - name: Print Bundler version
+        run: bundle --version
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: |
-          export PATH="$HOME/.gem/ruby/3.1.0/bin:$PATH"
-          bundle exec rake
+        run: bundle exec rake
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install Ruby and gems
+      - name: Install RVM and Ruby
         run: |
-          mkdir -p ~/.gem
-          echo "gem: --user-install --no-document" > ~/.gemrc
-          gem install bundler
-          bundle config path ~/.gem
-          bundle install
-      - name: Print PATH
-        run: echo "PATH=$PATH"
+          sudo apt-get update
+          sudo apt-get install -y gnupg2 curl
+          gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+          \curl -sSL https://get.rvm.io | bash -s stable --ruby=3.1.0 --gems=bundler
+      - name: Set PATH for Ruby and gem executables
+        run: echo "PATH=$HOME/.rvm/rubies/ruby-3.1.0/bin:$HOME/.rvm/gems/ruby-3.1.0/bin:$PATH" >> $GITHUB_ENV
+      - name: Print Ruby version
+        run: ruby --version
+      - name: Print Bundler version
+        run: bundle --version
       - name: Security audit dependencies
         run: vendor/bundle/ruby/3.1.0/bin/bundler-audit --update
       - name: Security audit application code
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
-        run: |
-          export PATH="$HOME/.gem/ruby/3.1.0/bin:$PATH"
-          bin/rubocop --parallel
+        run: bin/rubocop --parallel
