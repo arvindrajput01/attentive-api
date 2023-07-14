@@ -17,8 +17,8 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.5', '>= 7.0.5.1'
 gem 'rubocop'
-gem 'rubocop-rails'
 gem 'rspec-rails'
+gem 'rubocop-rails'
 gem 'ruby_audit'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 
